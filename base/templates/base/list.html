@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+<h1 id="title">{{list.title}}</h1>
+
+<p id="text">{{list.description}}</p>
+
+<div>
+    <h3 id="sub-header">Tasks:</h3>
+    
+    <ul>
+        <link rel="stylesheet" href="{% static 'base/styles/list.css' %}">
+    {% for task in tasks %}
+        <div>
+            <a href="{% url 'delete-task' task.id %}">Delete</a>
+            <div id="list-container">
+            <li>{{task.body}}</li> </div>
+        </div>
+    {% endfor %}
+    </ul>
+</div>
+
+<div>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <input id="taskinput" type="text" name="body" placeholder="Write your task here..." />
+    </form>
+</div>
+
+{% endblock content %}

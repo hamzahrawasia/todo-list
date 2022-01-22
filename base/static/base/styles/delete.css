@@ -1,0 +1,8 @@
+body {
+    background-color: rgb(245, 220, 241);
+    /* background: radial-gradient(red, yellow, green); */
+  }
+
+#confirm{
+    font-weight: bold;
+}

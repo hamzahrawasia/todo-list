@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+
+<link href="http://fonts.cdnfonts.com/css/pencil-2" rel="stylesheet">
+                
+<style>
+    @import url('http://fonts.cdnfonts.com/css/pencil-2');
+</style>
+
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'base/styles/main.css' %}">
+<h1 class="main-header">My To-Do Lists:</h1>
+
+<div>
+    <div id="button"><a href="{% url 'create-list' %}">Create List</a></div>
+    <div>
+        <ol>
+        {% for list in lists %}
+        <div>
+            <div id="button">
+            <a href="{% url 'update-list' list.id %}">Edit List</a>
+        </div>
+        <div id="button">
+            <a href="{% url 'delete-list' list.id %}">Delete List</a>
+        </div>
+        
+            <div id="border">
+            <li id="mylist"><a href="{% url 'list' list.id %}">&#10148 {{list.title}}</a></li>
+        </div>
+        </div>
+
+
+        {% endfor %}
+    </ol>
+    </div>
+
+
+
+</div>
+{% endblock content %}
